@@ -1,0 +1,82 @@
+:root {
+	/* Variables */
+	--sidebar-width: 0.15fr;
+	--header-height: auto;
+	--footer-height: 80px;
+	--right-bar-width: 0.25fr;
+	--default-grid-spacing: 0.5rem;
+	--small-grid-spacing: 0.2rem;
+	--large-grid-spacing: 1rem;
+	--sides-padding: 0.5fr;
+}
+html, body {
+    margin: 0;
+    height: 100%;
+}
+body {
+    display: grid;
+    grid-gap: var(--default-grid-spacing);
+    grid-template-columns:  1fr;
+    grid-template-areas: "header" "main" "footer"; /* Names of grid areas in order */
+    grid-template-rows: var(--header-height) 1fr var(--footer-height); /* row heights in order of areas (above) */
+}
+main {
+	grid-area: main;
+	display: grid;
+    grid-gap: var(--default-grid-spacing);
+    grid-template-areas: "sidebar" "content"; /* Names of grid areas in order */
+    grid-template-columns: var(--sides-padding) 1fr var(--sides-padding); /* row widths in order of areas (above) */
+    grid-template-rows: 1fr; /* row heights in order of areas (above) */
+}
+header {
+    background-color: #F8BBD0;
+	grid-area: header;
+}
+sidebar {
+	grid-area: sidebar;
+	background: peachpuff;
+	padding: 0.5rem;
+	max-width: 200px;
+}
+sidebar .element {
+	padding: 0.2rem;
+	background: lightcoral;
+}
+contents {
+	/* grid-area: content */ /* This is commented b/c it breaks if we do this for whatever reason */
+	background: lightblue;
+	padding: 1rem;
+	max-width: 1000px;
+}
+right-bar {
+	/* Right padding mostly */
+	/* grid-area: content */ /* This is commented b/c it breaks if we do this for whatever reason */
+}
+@media screen and (max-width: 800px) {
+	right-bar {
+		visibility: hidden;
+		clear: both;
+		display: none;
+	}
+	sidebar {
+		visibility: hidden;
+		clear: both;
+		display: none;
+	}
+	main {
+		grid-template-columns: 1fr;
+	}
+}
+@media screen and (max-width: 600px) {
+	
+	main {
+		grid-template-columns: 1fr;
+	}
+}
+main article {
+	background-color: orange;
+}
+footer {
+    background-color: #7E57C2;
+    grid-area: footer;
+}
